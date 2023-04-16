@@ -27,7 +27,7 @@
         public ITimeScheduler<T>.ParameterResult CheckSchedule(TimeOnly currentTime, T currentParameter)
         {
             var targetBounds = Schedules.Values
-                    .Where(s => TimeScheduler<T>.IsTimeWithinBounds(currentTime, s.TimeBounds))
+                    .Where(s => IsTimeWithinBounds(currentTime, s.TimeBounds))
                     .Select(s => s.ParamBounds)
                     .FirstOrDefault();
             if (targetBounds is null)
@@ -54,8 +54,8 @@
             var newTimeEnd = timeBounds.UpperBound;
             return Schedules.Values
                 .Select(ts => ts.TimeBounds)
-                .Where(tb => TimeScheduler<T>.AreBoundsWithinBounds(timeBounds, tb) || TimeScheduler<T>.AreBoundsWithinBounds(tb, timeBounds)
-                            || TimeScheduler<T>.IsTimeWithinBounds(newTimeStart, tb) || TimeScheduler<T>.IsTimeWithinBounds(newTimeEnd, tb))
+                .Where(tb => AreBoundsWithinBounds(timeBounds, tb) || AreBoundsWithinBounds(tb, timeBounds)
+                            || IsTimeWithinBounds(newTimeStart, tb) || IsTimeWithinBounds(newTimeEnd, tb))
                 .Any();
         }
 
