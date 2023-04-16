@@ -29,7 +29,7 @@
             var targetBounds = Schedules.Values
                     .Where(s => TimeScheduler<T>.IsTimeWithinBounds(currentTime, s.TimeBounds))
                     .Select(s => s.ParamBounds)
-                    .First();
+                    .FirstOrDefault();
             if (targetBounds is null)
             {
                 return ITimeScheduler<T>.ParameterResult.NOT_FOUND;
