@@ -16,19 +16,19 @@ namespace Homer
             /// <summary>
             /// Parameter is below the target bounds.
             /// </summary>
-            BELOW_BOUNDS,
+            BelowBounds,
             /// <summary>
             /// Parameter is within the target bounds.
             /// </summary>
-            IN_BOUNDS,
+            InBounds,
             /// <summary>
             /// Parameter is above the target bounds.
             /// </summary>
-            ABOVE_BOUNDS,
+            AboveBounds,
             /// <summary>
             /// No applicable schedule was found.
             /// </summary>
-            NOT_FOUND
+            NotFound
         }
 
         /// <summary>

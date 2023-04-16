@@ -32,19 +32,19 @@
                     .FirstOrDefault();
             if (targetBounds is null)
             {
-                return ITimeScheduler<T>.ParameterResult.NOT_FOUND;
+                return ITimeScheduler<T>.ParameterResult.NotFound;
             }
             else if (currentParameter.CompareTo(targetBounds.LowerBound) < 0)
             {
-                return ITimeScheduler<T>.ParameterResult.BELOW_BOUNDS;
+                return ITimeScheduler<T>.ParameterResult.BelowBounds;
             }
             else if (currentParameter.CompareTo(targetBounds.UpperBound) > 0)
             {
-                return ITimeScheduler<T>.ParameterResult.ABOVE_BOUNDS;
+                return ITimeScheduler<T>.ParameterResult.AboveBounds;
             }
             else
             {
-                return ITimeScheduler<T>.ParameterResult.IN_BOUNDS;
+                return ITimeScheduler<T>.ParameterResult.InBounds;
             }
         }
 

@@ -72,12 +72,12 @@ namespace HomerTest
         {
             InitSchedules();
 
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NOT_FOUND, _scheduler?.CheckSchedule(s_timeEarly, s_tempInRange));
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NOT_FOUND, _scheduler?.CheckSchedule(s_timeLater, s_tempInRange));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NotFound, _scheduler?.CheckSchedule(s_timeEarly, s_tempInRange));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NotFound, _scheduler?.CheckSchedule(s_timeLater, s_tempInRange));
 
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.BELOW_BOUNDS, _scheduler?.CheckSchedule(s_timeInRange, s_tempBelow));
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.IN_BOUNDS, _scheduler?.CheckSchedule(s_timeInRange, s_tempInRange));
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.ABOVE_BOUNDS, _scheduler?.CheckSchedule(s_timeInRange, s_tempAbove));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.BelowBounds, _scheduler?.CheckSchedule(s_timeInRange, s_tempBelow));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.InBounds, _scheduler?.CheckSchedule(s_timeInRange, s_tempInRange));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.AboveBounds, _scheduler?.CheckSchedule(s_timeInRange, s_tempAbove));
         }
 
         private void InitSchedules()
