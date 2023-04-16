@@ -26,7 +26,7 @@
 
         public ITimeScheduler<T>.ParameterResult CheckSchedule(TimeOnly currentTime, T currentParameter)
         {
-            var targetBounds = Schedules.Values
+            Bounds<T>? targetBounds = Schedules.Values
                     .Where(s => IsTimeWithinBounds(currentTime, s.TimeBounds))
                     .Select(s => s.ParamBounds)
                     .FirstOrDefault();
@@ -50,8 +50,8 @@
 
         private bool IsOverlapsing(Bounds<TimeOnly> timeBounds)
         {
-            var newTimeStart = timeBounds.LowerBound;
-            var newTimeEnd = timeBounds.UpperBound;
+            TimeOnly newTimeStart = timeBounds.LowerBound;
+            TimeOnly newTimeEnd = timeBounds.UpperBound;
             return Schedules.Values
                 .Select(ts => ts.TimeBounds)
                 .Where(tb => AreBoundsWithinBounds(timeBounds, tb) || AreBoundsWithinBounds(tb, timeBounds)
