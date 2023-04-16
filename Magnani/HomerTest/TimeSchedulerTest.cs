@@ -18,14 +18,14 @@ namespace HomerTest
             public static Temperature FromCelsius(double celsius) => new(celsius);
         }
 
-        private static readonly Bounds<TimeOnly> TIME_RANGE = new(new TimeOnly(9, 0), new TimeOnly(12, 0));
-        private static readonly Bounds<Temperature> TEMP_RANGE = new(TemperatureFactory.FromCelsius(19), TemperatureFactory.FromCelsius(22));
-        private static readonly TimeOnly TIME_EARLY = new(0, 0);
-        private static readonly TimeOnly TIME_IN_RANGE = new(10, 0);
-        private static readonly TimeOnly TIME_LATER = new(23, 0);
-        private static readonly Temperature TEMP_BELOW = TemperatureFactory.FromCelsius(0);
-        private static readonly Temperature TEMP_IN_RANGE = TemperatureFactory.FromCelsius(20);
-        private static readonly Temperature TEMP_ABOVE = TemperatureFactory.FromCelsius(30);
+        private static readonly Bounds<TimeOnly> s_timeRange = new(new TimeOnly(9, 0), new TimeOnly(12, 0));
+        private static readonly Bounds<Temperature> s_tempRange = new(TemperatureFactory.FromCelsius(19), TemperatureFactory.FromCelsius(22));
+        private static readonly TimeOnly s_timeEarly = new(0, 0);
+        private static readonly TimeOnly s_timeInRange = new(10, 0);
+        private static readonly TimeOnly s_timeLater = new(23, 0);
+        private static readonly Temperature s_tempBelow = TemperatureFactory.FromCelsius(0);
+        private static readonly Temperature s_tempInRange = TemperatureFactory.FromCelsius(20);
+        private static readonly Temperature s_tempAbove = TemperatureFactory.FromCelsius(30);
 
         private TimeScheduler<Temperature>? _scheduler;
 
@@ -41,8 +41,8 @@ namespace HomerTest
             InitSchedules();
 
             TimeSchedule<Temperature>? schedule = _scheduler?.GetSchedules().Values.First();
-            Assert.AreEqual(TIME_RANGE, schedule?.TimeBounds);
-            Assert.AreEqual(TEMP_RANGE, schedule?.ParamBounds);
+            Assert.AreEqual(s_timeRange, schedule?.TimeBounds);
+            Assert.AreEqual(s_tempRange, schedule?.ParamBounds);
         }
 
         [TestMethod]
@@ -50,10 +50,10 @@ namespace HomerTest
         {
             InitSchedules();
 
-            CheckOverlapping(TIME_RANGE);
-            CheckOverlapping(new Bounds<TimeOnly>(TIME_EARLY, TIME_IN_RANGE));
-            CheckOverlapping(new Bounds<TimeOnly>(TIME_IN_RANGE, TIME_LATER));
-            CheckOverlapping(new Bounds<TimeOnly>(TIME_IN_RANGE, TIME_IN_RANGE));
+            CheckOverlapping(s_timeRange);
+            CheckOverlapping(new Bounds<TimeOnly>(s_timeEarly, s_timeInRange));
+            CheckOverlapping(new Bounds<TimeOnly>(s_timeInRange, s_timeLater));
+            CheckOverlapping(new Bounds<TimeOnly>(s_timeInRange, s_timeInRange));
         }
 
         [TestMethod]
@@ -72,25 +72,25 @@ namespace HomerTest
         {
             InitSchedules();
 
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NOT_FOUND, _scheduler?.CheckSchedule(TIME_EARLY, TEMP_IN_RANGE));
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NOT_FOUND, _scheduler?.CheckSchedule(TIME_LATER, TEMP_IN_RANGE));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NOT_FOUND, _scheduler?.CheckSchedule(s_timeEarly, s_tempInRange));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.NOT_FOUND, _scheduler?.CheckSchedule(s_timeLater, s_tempInRange));
 
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.BELOW_BOUNDS, _scheduler?.CheckSchedule(TIME_IN_RANGE, TEMP_BELOW));
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.IN_BOUNDS, _scheduler?.CheckSchedule(TIME_IN_RANGE, TEMP_IN_RANGE));
-            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.ABOVE_BOUNDS, _scheduler?.CheckSchedule(TIME_IN_RANGE, TEMP_ABOVE));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.BELOW_BOUNDS, _scheduler?.CheckSchedule(s_timeInRange, s_tempBelow));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.IN_BOUNDS, _scheduler?.CheckSchedule(s_timeInRange, s_tempInRange));
+            Assert.AreEqual(ITimeScheduler<Temperature>.ParameterResult.ABOVE_BOUNDS, _scheduler?.CheckSchedule(s_timeInRange, s_tempAbove));
         }
 
         private void InitSchedules()
         {
             Assert.AreEqual(0, _scheduler?.GetSchedules().Count);
-            _scheduler?.AddSchedule(TIME_RANGE, TEMP_RANGE);
+            _scheduler?.AddSchedule(s_timeRange, s_tempRange);
             Assert.AreEqual(1, _scheduler?.GetSchedules().Count);
         }
 
         private void CheckOverlapping(Bounds<TimeOnly> newTimeRange)
         {
             int? sizeBefore = _scheduler?.GetSchedules().Count;
-            Assert.ThrowsException<ArgumentException>(() => _scheduler?.AddSchedule(newTimeRange, TEMP_RANGE));
+            Assert.ThrowsException<ArgumentException>(() => _scheduler?.AddSchedule(newTimeRange, s_tempRange));
             Assert.AreEqual(sizeBefore, _scheduler?.GetSchedules().Count);
         }
     }

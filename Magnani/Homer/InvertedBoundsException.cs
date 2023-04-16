@@ -6,12 +6,12 @@
     /// </summary>
     public class InvertedBoundsException : Exception
     {
-        private static readonly string DEFAULT_MESSAGE = "lower and upper bounds are inverted";
+        private static readonly string s_defaultMessage = "lower and upper bounds are inverted";
 
         /// <summary>
         /// Constructs an <see cref="InvertedBoundsException"/> with a default error message. 
         /// </summary>
-        public InvertedBoundsException() : base(DEFAULT_MESSAGE)
+        public InvertedBoundsException() : base(s_defaultMessage)
         {
         }
 
