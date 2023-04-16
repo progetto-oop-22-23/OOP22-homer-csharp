@@ -40,7 +40,7 @@ namespace HomerTest
         {
             InitSchedules();
 
-            var schedule = _scheduler?.GetSchedules().Values.First();
+            TimeSchedule<Temperature>? schedule = _scheduler?.GetSchedules().Values.First();
             Assert.AreEqual(TIME_RANGE, schedule?.TimeBounds);
             Assert.AreEqual(TEMP_RANGE, schedule?.ParamBounds);
         }
@@ -89,7 +89,7 @@ namespace HomerTest
 
         private void CheckOverlapping(Bounds<TimeOnly> newTimeRange)
         {
-            var sizeBefore = _scheduler?.GetSchedules().Count;
+            int? sizeBefore = _scheduler?.GetSchedules().Count;
             Assert.ThrowsException<ArgumentException>(() => _scheduler?.AddSchedule(newTimeRange, TEMP_RANGE));
             Assert.AreEqual(sizeBefore, _scheduler?.GetSchedules().Count);
         }
