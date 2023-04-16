@@ -18,8 +18,8 @@ namespace Homer
             {
                 throw new InvertedBoundsException();
             }
-            this.LowerBound = lowerBound;
-            this.UpperBound = upperBound;
+            LowerBound = lowerBound;
+            UpperBound = upperBound;
         }
 
         /// <summary>
