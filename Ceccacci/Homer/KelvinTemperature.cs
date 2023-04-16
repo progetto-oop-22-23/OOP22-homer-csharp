@@ -12,7 +12,6 @@ public class KelvinTemperature : ITemperature
     
     public int CompareTo(ITemperature? other)
     {
-        if (other == null) return 1;
-        return this.Kelvin.CompareTo(other.Kelvin);
+        return other == null ? 1 : this.Kelvin.CompareTo(other.Kelvin);
     }
 }
