@@ -8,8 +8,8 @@ namespace HomerTest
         // Mock temperature class
         private class Temperature : IComparable<Temperature>
         {
-            public double Celsius { get; }
             public Temperature(double celsius) => Celsius = celsius;
+            public double Celsius { get; }
             public int CompareTo(Temperature? other) => Celsius.CompareTo(other?.Celsius);
         }
         // Mock temperature factory class

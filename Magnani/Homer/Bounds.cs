@@ -7,15 +7,6 @@ namespace Homer
     public class Bounds<T> where T : notnull, IComparable<T>
     {
         /// <summary>
-        /// The lower boundary object.
-        /// </summary>
-        public T LowerBound { get; }
-        /// <summary>
-        /// The upper boundary object.
-        /// </summary>
-        public T UpperBound { get; }
-
-        /// <summary>
         /// Constructs a pair of bounds.
         /// </summary>
         /// <param name="lowerBound">the lower boundary object.</param>
@@ -30,5 +21,15 @@ namespace Homer
             this.LowerBound = lowerBound;
             this.UpperBound = upperBound;
         }
+
+        /// <summary>
+        /// The lower boundary object.
+        /// </summary>
+        public T LowerBound { get; }
+
+        /// <summary>
+        /// The upper boundary object.
+        /// </summary>
+        public T UpperBound { get; }
     }
 }
