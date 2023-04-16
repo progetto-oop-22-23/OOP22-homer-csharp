@@ -7,18 +7,18 @@ namespace HomerTest
     {
         private static readonly int LOWER_BOUND = 0;
         private static readonly int UPPER_BOUND = 1;
-        private readonly Bounds<int> bounds = new(LOWER_BOUND, UPPER_BOUND);
+        private readonly Bounds<int> _bounds = new(LOWER_BOUND, UPPER_BOUND);
 
         [TestMethod]
         public void TestLowerBound()
         {
-            Assert.AreEqual(LOWER_BOUND, bounds.LowerBound);
+            Assert.AreEqual(LOWER_BOUND, _bounds.LowerBound);
         }
 
         [TestMethod]
         public void TestUpperBound()
         {
-            Assert.AreEqual(UPPER_BOUND, bounds.UpperBound);
+            Assert.AreEqual(UPPER_BOUND, _bounds.UpperBound);
         }
 
         [TestMethod]
