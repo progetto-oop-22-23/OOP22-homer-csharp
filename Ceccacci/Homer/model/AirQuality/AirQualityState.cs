@@ -7,6 +7,13 @@ public class AirQualityState : IAirQualityState
     private double _pm10;
     private double _pm25;
 
+    /// <summary>
+    /// Standard constructor
+    /// </summary>
+    /// <param name="co2">the co2 level</param>
+    /// <param name="pm10">the pm10 level</param>
+    /// <param name="toxicGasPercentage">the toxic gas percentage level</param>
+    /// <param name="pm25">the pm25 level</param>
     public AirQualityState(double co2, double pm10, double toxicGasPercentage, double pm25)
     {
         Co2 = co2;

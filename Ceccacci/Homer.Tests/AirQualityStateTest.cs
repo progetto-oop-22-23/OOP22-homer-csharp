@@ -19,7 +19,9 @@ public class AirQualityStateTest
     public void TestRequireToxicGasPercentageSmallerOrEqualThanOneHundred()
     {
         var airQualityState = new AirQualityState(0, 0, 0, 0);
-        Assert.Throws<ArgumentOutOfRangeException>(() => airQualityState.ToxicGasPercentage = 101.5);
+        airQualityState.ToxicGasPercentage = 100;
+        Assert.Throws<ArgumentOutOfRangeException>(() => airQualityState.ToxicGasPercentage = 100.5);
+        Assert.Throws<ArgumentOutOfRangeException>(() => airQualityState.ToxicGasPercentage = 101);
     }
     
 }
