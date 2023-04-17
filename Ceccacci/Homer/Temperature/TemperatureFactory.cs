@@ -1,7 +1,7 @@
 namespace Homer.Temperature;
 /// <summary>
 /// Factory for ITemperature objects.
-/// </summary>
+/// </summary>      
 public static class TemperatureFactory
 {
     public static ITemperature FromCelsius(double temperature) =>
