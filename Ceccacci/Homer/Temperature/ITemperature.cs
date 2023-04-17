@@ -1,7 +1,8 @@
 namespace Homer.Temperature;
 
 /// <summary>
-/// 
+/// Represents a fixed temperature value, that can be
+/// represented as kelvin, Fahrenheit or celsius.
 /// </summary>
 public interface ITemperature: IComparable<ITemperature>
 {

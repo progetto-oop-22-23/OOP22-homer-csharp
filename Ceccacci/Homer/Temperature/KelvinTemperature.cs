@@ -1,8 +1,7 @@
 namespace Homer.Temperature;
 
 /// <summary>
-/// Represents a fixed temperature value, that can be
-/// represented as kelvin, Fahrenheit or celsius.
+/// Temperature that uses kelvin as a base value.
 /// </summary>
 public class KelvinTemperature : ITemperature
 {
