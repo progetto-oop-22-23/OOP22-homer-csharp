@@ -4,7 +4,7 @@ namespace Homer.model
     {
         private OutletState _state;
 
-        public Outlet(readonly OutletState state)
+        public Outlet(OutletState state)
         {
             _state = state;
         }
@@ -21,10 +21,10 @@ namespace Homer.model
             set => _state = value;
         }
 
-        public void UpdateTick(TimeSpan timeSpan)
+        public void UpdateTick(System.TimeSpan timeSpan)
         {
-            double randomIncrement = Math.sin(timeSpan.Seconds);
-            this.State += randomIncrement;
+            double randomIncrement = System.Math.Sin(timeSpan.Seconds);
+            this.State.Consumption += randomIncrement;
         }
     }
 }
