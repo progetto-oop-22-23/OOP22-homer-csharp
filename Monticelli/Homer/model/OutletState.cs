@@ -1,4 +1,4 @@
-namespace homer.model
+namespace Homer.model
 {
     public class OutletState : IOutletState
     {
