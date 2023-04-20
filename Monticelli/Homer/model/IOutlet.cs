@@ -1,9 +1,9 @@
-namespace Homer.model;
+namespace Homer.model
 {
     public interface IOutlet
     {
-        public OutletState State { get; set; };
+        public OutletState State { get; set; }
 
-        void UpdateTick(TimeSpan timeSpan);
+        void UpdateTick(System.TimeSpan timeSpan);
     }
 }
