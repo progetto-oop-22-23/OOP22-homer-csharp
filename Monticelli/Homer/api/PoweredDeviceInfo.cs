@@ -4,22 +4,31 @@ namespace Homer.api
     {
         private readonly double _minConsumption;
         private readonly double _maxConsumption;
-        private Outlet _outlet;
+        private Homer.model.Outlet _outlet;
 
-        public PoweredDeviceInfo(double minConsumption, double maxConsumption, Outlet outlet) 
+        public PoweredDeviceInfo(double minConsumption, double maxConsumption, Homer.model.Outlet outlet) 
         {
             _minConsumption = minConsumption;
             _maxConsumption = maxConsumption;
             _outlet = outlet;
         }
 
-        public Outlet GetOutlet() => _outlet;
+        public Homer.model.Outlet Outlet
+        {
+            get => _outlet;
 
-        public void SetOutlet(Outlet outlet) => _outlet = outlet;
+            set => _outlet = value;
+        }
 
-        public double GetMinConsumption() => _minConsumption;
+        public double MinConsumption
+        {
+            get => _minConsumption;
+        }
 
-        public double GetMaxConsumption() => _maxConsumption;
+        public double MaxConsumption
+        {
+            get => _maxConsumption;
+        }
 
         public override bool Equals(object obj) {
             if (this == obj) 
@@ -32,23 +41,23 @@ namespace Homer.api
                 return false;
             }
 
-            var that = (PoweredDeviceInfoImpl)obj;
+            var that = (PoweredDeviceInfo) obj;
 
-            if (that._minConsumption.CompareTo(_minConsumption) != 0)
+            if (that.MinConsumption.CompareTo(_minConsumption) != 0)
             {
                 return false;
             }
 
-            if(that._maxConsumption.CompareTo(_maxConsumption) != 0)
+            if(that.MaxConsumption.CompareTo(_maxConsumption) != 0)
             {
                 return false;
             }
 
-            return _outlet.Equals(that._outlet);
+            return _outlet.Equals(that.Outlet);
         }
 
         public override int GetHashCode() {
-            return GetOutlet().GetHashCode();
+            return Outlet.GetHashCode();
         }
     }
 }
