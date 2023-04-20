@@ -15,7 +15,7 @@ public class PoweredDeviceInfo : IPoweredDeviceInfo
 
     public Outlet GetOutlet() => _outlet;
 
-    public void SetOutlet(Outlet) = _outlet = outlet;
+    public void SetOutlet(Outlet outlet) => _outlet = outlet;
 
     public double GetMinConsumption() => _minConsumption;
 
