@@ -19,7 +19,6 @@ public class Outlet : IOutlet
     {
         get => _state;
 
-
         set => _state = value;
     }
 
@@ -27,7 +26,6 @@ public class Outlet : IOutlet
     {
         double randomIncrement = Math.sin(timeSpan.Seconds);
         this.State += randomIncrement;
-
     }
 
 }
