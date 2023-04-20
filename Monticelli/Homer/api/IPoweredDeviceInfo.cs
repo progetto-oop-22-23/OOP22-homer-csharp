@@ -2,11 +2,11 @@ namespace Homer.api;
 
 public interface IPoweredDeviceInfo
 {
-    Outlet getOutlet();
+    Outlet GetOutlet();
 
-    void setOutlet(Outlet outlet);
+    void SetOutlet(Outlet outlet);
     
-    double getMinConsumption();
+    double GetMinConsumption();
 
-    double getMaxConsumption();
+    double GetMaxConsumption();
 }
