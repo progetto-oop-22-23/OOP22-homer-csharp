@@ -1,8 +1,9 @@
-namespace Homer.model;
-
-public interface IOutletState
+namespace Homer.model
 {
-    public double MinConsumption { get; set; }
-    public double MaxConsumption { get; set; }
-    public double Consumption { get; set; }
+    public interface IOutletState
+    {
+        public double MinConsumption { get; set; }
+        public double MaxConsumption { get; set; }
+        public double Consumption { get; set; }
+    }
 }

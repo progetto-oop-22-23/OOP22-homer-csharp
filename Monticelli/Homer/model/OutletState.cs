@@ -1,36 +1,37 @@
-namespace homer.model;
-
-public class OutletState : IOutletState
+namespace homer.model
 {
-    private double _minConsumption;
-    private double _maxConsumption;
-    private double _consumption;
-
-    public OutletState(double minConsumption, double maxConsumption, double consumption)
+    public class OutletState : IOutletState
     {
-        _minConsumption = minConsumption;
-        _maxConsumption = maxConsumption;
-        _consumption = consumption;
-    }
+        private double _minConsumption;
+        private double _maxConsumption;
+        private double _consumption;
 
-    public double MinConsumption
-    {
-        get => _minConsumption;
+        public OutletState(double minConsumption, double maxConsumption, double consumption)
+        {
+            _minConsumption = minConsumption;
+            _maxConsumption = maxConsumption;
+            _consumption = consumption;
+        }
 
-        set => _minConsumption = value;
-    }
+        public double MinConsumption
+        {
+            get => _minConsumption;
 
-    public double MaxConsumption
-    {
-        get => _maxConsumption;
+            set => _minConsumption = value;
+        }
 
-        set => _maxConsumption = value;
-    }
+        public double MaxConsumption
+        {
+            get => _maxConsumption;
 
-    public double Consumption
-    {
-        get => _consumption;
+            set => _maxConsumption = value;
+        }
 
-        set => _consumption = value;
+        public double Consumption
+        {
+            get => _consumption;
+
+            set => _consumption = value;
+        }
     }
 }
