@@ -2,12 +2,10 @@ namespace Homer.api
 {
     public interface IPoweredDevice
     {
-        double GetInstantConsumption();
+        public double InstantConsumption { get; set; }
 
-        void SetInstantConsumption(double instantConsumption);
+        void Plug(Homer.model.Outlet outlet);
 
-        void Plug(Outlet outlet);
-
-        PoweredDeviceInfo GetPowerInfo();
+        public Homer.api.PoweredDeviceInfo PoweredDeviceInfo { get; }
     }
 }
